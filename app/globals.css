@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-background: #001114;
+  --color-surface: #001d22;
+  --color-surface-low: #00161a;
+  --color-surface-high: #002b30;
+  
+  --color-primary: #00f8ff;
+  --color-secondary: #07e6ff;
+  --color-tertiary: #088cdc;
+  --color-neutral: #487f89;
+  --color-error: #ff716c;
+
+  --color-mood-incredible: #00f8ff;
+  --color-mood-very-good: #07e6ff;
+  --color-mood-good: #3fa6f8;
+  --color-mood-normal: #487f89;
+  --color-mood-bad: #088cdc;
+  --color-mood-horrible: #ff716c;
+
+  --font-display: var(--font-epilogue), sans-serif;
+  --font-body: var(--font-lexend), sans-serif;
+
+  --radius-max: 9999px;
+  --radius-card: 1.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white font-body antialiased selection:bg-primary/30 selection:text-primary;
+  }
+
+  /* Custom scrollbar for a polished look */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-high rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-surface/80 backdrop-blur-[20px];
+  }
+  .neon-glow {
+    box-shadow: 0 0 40px -10px var(--color-primary);
+  }
+}
