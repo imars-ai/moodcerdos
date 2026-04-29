@@ -17,7 +17,7 @@ const MOOD_OPTIONS: { type: MoodType; label: string; icon: any; colorClass: stri
   { type: 'good', label: 'Bien', icon: Smile, colorClass: 'text-mood-good', hoverClass: 'hover:bg-mood-good/10' },
   { type: 'normal', label: 'Normal', icon: Meh, colorClass: 'text-mood-normal', hoverClass: 'hover:bg-mood-normal/10' },
   { type: 'bad', label: 'Mal', icon: Frown, colorClass: 'text-mood-bad', hoverClass: 'hover:bg-mood-bad/10' },
-  { type: 'horrible', label: 'Horrible', icon: Angry, colorClass: 'text-mood-horrible', hoverClass: 'hover:bg-mood-horrible/10' },
+  { type: 'horrible', label: 'Horribleeeee', icon: Angry, colorClass: 'text-mood-horrible', hoverClass: 'hover:bg-mood-horrible/10' },
 ];
 
 export function MoodForm({ selectedDate, existingEntry, onSave }: MoodFormProps) {
@@ -76,7 +76,7 @@ export function MoodForm({ selectedDate, existingEntry, onSave }: MoodFormProps)
     <div className="p-10 rounded-card bg-surface shadow-2xl border border-neutral/20 relative overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
-      
+
       <h2 className="font-display text-3xl mb-8 flex items-center gap-4">
         Registro Diario
         <span className="text-sm font-body text-neutral font-normal">
@@ -97,16 +97,14 @@ export function MoodForm({ selectedDate, existingEntry, onSave }: MoodFormProps)
               <button
                 key={option.type}
                 onClick={() => setMood(option.type)}
-                className={`flex flex-col items-center gap-3 p-4 rounded-xl transition-all duration-300 group ${
-                  isSelected 
-                    ? 'bg-surface-high border border-neutral/30 shadow-inner' 
+                className={`flex flex-col items-center gap-3 p-4 rounded-xl transition-all duration-300 group ${isSelected
+                    ? 'bg-surface-high border border-neutral/30 shadow-inner'
                     : `${option.hoverClass} border border-transparent`
-                }`}
+                  }`}
               >
-                <Icon 
-                  className={`w-10 h-10 transition-transform group-hover:scale-110 ${
-                    isSelected ? option.colorClass : 'text-neutral'
-                  }`} 
+                <Icon
+                  className={`w-10 h-10 transition-transform group-hover:scale-110 ${isSelected ? option.colorClass : 'text-neutral'
+                    }`}
                 />
                 <span className={`font-body font-bold text-[10px] uppercase ${isSelected ? 'text-white' : 'text-neutral'}`}>
                   {option.label}
@@ -125,10 +123,10 @@ export function MoodForm({ selectedDate, existingEntry, onSave }: MoodFormProps)
           </label>
           <span className="text-xl font-display font-bold text-primary">{score}/10</span>
         </div>
-        <input 
-          type="range" 
-          min="1" 
-          max="10" 
+        <input
+          type="range"
+          min="1"
+          max="10"
           value={score}
           onChange={(e) => setScore(parseInt(e.target.value))}
           className="w-full h-2 bg-surface-high rounded-lg appearance-none cursor-pointer accent-primary"
@@ -143,10 +141,10 @@ export function MoodForm({ selectedDate, existingEntry, onSave }: MoodFormProps)
           </label>
           <span className="text-[10px] font-body text-neutral">{note.length}/150</span>
         </div>
-        <textarea 
+        <textarea
           value={note}
           onChange={(e) => setNote(e.target.value.slice(0, 150))}
-          className="w-full h-40 bg-background border-0 rounded-xl p-6 font-body text-white focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-neutral/40 resize-none" 
+          className="w-full h-40 bg-background border-0 rounded-xl p-6 font-body text-white focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-neutral/40 resize-none"
           placeholder="Escribe libremente tus pensamientos..."
         ></textarea>
       </div>
@@ -165,11 +163,10 @@ export function MoodForm({ selectedDate, existingEntry, onSave }: MoodFormProps)
                 <button
                   key={level}
                   onClick={() => setEnergy(level)}
-                  className={`flex-1 py-2 text-xs font-bold rounded-max transition-all ${
-                    isSelected 
-                      ? 'bg-surface-high text-white shadow-sm' 
+                  className={`flex-1 py-2 text-xs font-bold rounded-max transition-all ${isSelected
+                      ? 'bg-surface-high text-white shadow-sm'
                       : 'text-neutral hover:text-white'
-                  }`}
+                    }`}
                 >
                   {labels[level]}
                 </button>
@@ -183,27 +180,26 @@ export function MoodForm({ selectedDate, existingEntry, onSave }: MoodFormProps)
           <label className="block font-body font-bold text-[10px] uppercase tracking-widest text-neutral mb-6">
             Una palabra para hoy
           </label>
-          <input 
-            type="text" 
+          <input
+            type="text"
             value={word}
             onChange={(e) => setWord(e.target.value.slice(0, 30))}
-            className="w-full bg-background border-0 rounded-max px-6 py-3 font-body text-sm focus:ring-2 focus:ring-primary/30 transition-all text-white placeholder:text-neutral/40" 
-            placeholder="Ej: Gratitud" 
+            className="w-full bg-background border-0 rounded-max px-6 py-3 font-body text-sm focus:ring-2 focus:ring-primary/30 transition-all text-white placeholder:text-neutral/40"
+            placeholder="Ej: Gratitud"
           />
         </div>
       </div>
 
       {/* Action */}
       <div className="flex justify-end pt-4">
-        <motion.button 
+        <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleSave}
-          className={`font-display font-bold text-lg px-12 py-5 flex items-center justify-center gap-2 rounded-max transition-all duration-300 w-full sm:w-auto ${
-            isSaved 
-              ? 'bg-green-500 text-white shadow-[0_0_30px_rgba(34,197,94,0.3)]' 
+          className={`font-display font-bold text-lg px-12 py-5 flex items-center justify-center gap-2 rounded-max transition-all duration-300 w-full sm:w-auto ${isSaved
+              ? 'bg-green-500 text-white shadow-[0_0_30px_rgba(34,197,94,0.3)]'
               : 'bg-primary text-background hover:shadow-[0_0_30px_rgba(0,248,255,0.3)]'
-          }`}
+            }`}
         >
           {isSaved ? (
             <>
