@@ -9,6 +9,7 @@ export interface MoodEntry {
   energy: EnergyLevel;
   word: string;
   note: string;
+  aiInsight?: string;
   createdAt: number;
   updatedAt: number;
 }
